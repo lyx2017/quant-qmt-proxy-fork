@@ -748,7 +748,9 @@ async def create_subscription(
         
         # 根据订阅类型创建订阅
         if request.subscription_type == SubscriptionType.WHOLE_QUOTE:
-            subscription_id = subscription_manager.subscribe_whole_quote()
+            subscription_id = subscription_manager.subscribe_whole_quote(
+                symbols=request.symbols                
+            )
         else:
             subscription_id = subscription_manager.subscribe_quote(
                 symbols=request.symbols,
